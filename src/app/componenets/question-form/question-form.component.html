@@ -1,0 +1,46 @@
+<header>
+    <ul>
+        <li><a href="default.asp">QUIZ-CORE</a></li>
+    </ul>
+</header>
+
+   
+<div class="row" style="width:50%; float: left;">
+    <div class="column">
+        <h3>Question</h3>
+    
+    
+            <label *ngIf="isEdit==false" for="fname">Your Exam</label>
+            <input *ngIf="isEdit==false" type="text" id="fname" name="firstname" placeholder="Please your exam ">
+            
+            <label  for="lname">Your Question</label>
+            <input [(ngModel)] = "mcqQuestion.question_Title" type="text" id="lname" name="lastname" placeholder="Please the enter question">
+            
+            <input (click)="submit()" type="submit" value="Submit">
+
+    </div>
+    
+    <div class="column" *ngIf="isEdit==false" style="background-color:rgb(33, 104, 39); margin-left: 45rem; width: 80%; margin-top:-25rem;">
+      <div class="rows">
+        <label for="lname" ></label>
+        <input type="text" [(ngModel)]="mcqChoice.choice" id="lname" name="lastname" placeholder="Please enter option title....">
+        
+        <select [(ngModel)]="selectedOptionTrue"  name="choice">
+            <option value="0">true</option>
+            <option value="1">false</option>
+        </select>
+        <input type="submit" value="Submit" (click)="addoption()">
+      </div>
+        
+        <table class="examtable">
+            <tr *ngFor="let question of array; let i = index" style="position: relative;background-color: rgb(122, 186, 238);">
+                <td style="width:5rem; text-align:center;">{{ i + 1 }}</td>
+                <td style="width:20rem; padding: 10px;">{{ question.choice }}</td>
+                <td style="width:20rem; padding: 10px;">{{ question.valid }}</td>
+            </tr>
+        </table>
+
+        
+    </div>
+</div>
+
